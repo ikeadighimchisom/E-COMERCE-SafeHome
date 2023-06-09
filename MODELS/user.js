@@ -1,58 +1,48 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema ({
-    name: {
-        type: String,
-        require: [true, "name is required"]
-    },
-    email: {
-        type: String,
-        require: [true, "email is required"],
-        unique: true
-    },
-    password: {
-        type: String,
-        require: [true, "password is require"]
-    },
-    brandname: {
-        type: String,
-        require: [true, "brandname is require"]
-    },
-    image: {
-        type: String,
-        require: [true, "image is require"]
-    },
-    cloudId: {
-        type: String,
-        require: [true, "cloudId is require"]
-    },
-    verify: { 
-        type: Boolean,
-        default: false
-     },
+// const userSchema = new mongoose.Schema ({
+//     name: {
+//         type: String,
+//         require: [true, "fullname is required"]
+//     },
+//     email: {
+//         type: String,
+//         require: [true, "email is required"],
+//         unique: true
+//     },
+//     password: {
+//         type: String,
+//         require: [true, "password is require"]
+//     },
+//     verify: { 
+//         type: Boolean,
+//         default: false
+//      },
+//     //  Order: [{
+//     //     type: mongoose.Schema.Types.ObjectId,
+//     //     ref: "Order"
+//     // }],
+//     isMachant: {  
+//         type: Boolean,
+//         default: false
+//     },
+//     // products :[{
+//     //     type: mongoose.Schema.Types.ObjectId,
+//     //     ref: "product"
+//     // }],
+//     isSuperAdmin: {  
+//         type: Boolean,
+//         default: false
+//     },
+//     token: {
+//         type: String,
+//     }
+ 
+//    },
 
-    isAdmin: { 
-        type: Boolean,
-        default: false 
-    },
+//    {
+//     timestamps: true,
+//    });
 
-    isSuperAdmin: {  
-        type: Boolean,
-        default: false
-    },
-    // role: {
-    //     type: String,
-    //     enum: ['user', 'admin', 'superadmin'],
-    //     default: 'user',
-    // },
-
-    token: {
-        type: String,
-    },
-},
-   {
-    timestamps: true,
-   });
-   
-const AddUser = mongoose.model("AddUser", userSchema)
-module.exports = AddUser;
+//    const AddUser = mongoose.model("AddUser", userSchema)
+//    module.exports = AddUser;

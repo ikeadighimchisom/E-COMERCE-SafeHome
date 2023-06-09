@@ -8,7 +8,7 @@ const {newRating} = require('../CONTROLLER/Rating');
 
 
 
-router.patch("/rate/:id",newRating)
+router.patch("/rating/:proid",newRating)
 //router.post("/rate/:id",newRating)
 
 

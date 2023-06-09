@@ -3,7 +3,7 @@ const prod = require("../MODELS/productModel");
 
 exports.newRating = async (req, res) => {
     try{
-        const productId = req.params.id;
+        const productId = req.params.proid;
         const newRating = req.body.rating;
         
         const product = await prod.findByIdAndUpdate(productId, {

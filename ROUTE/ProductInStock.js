@@ -8,7 +8,7 @@ const {newStock} = require('../CONTROLLER/ProductInStock');
 
 
 
-stockRouter.patch("/stock/:proid",newStock)
+stockRouter.patch("/Stocks/:ProId",newStock)
 //router.post("/rate/:id",newRating)
 
 module.exports = stockRouter;

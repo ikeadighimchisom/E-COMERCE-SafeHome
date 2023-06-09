@@ -20,7 +20,7 @@ const Carts = require("../MODELS/AddCartModel");
 //     }
 // }
 exports.AddToCart = async (req, res) => {
-    try {
+    try {  
       const { productId, price,userId, quantity } = req.body;
       
       // Create a new cart entry

@@ -7,9 +7,9 @@ const { isSuperAdmin} = require("../HELPER/athu");
 const superRoutes = express.Router();
 
 superRoutes.route("/super").post(SuperAdminSignUp);
-superRoutes.route("/allUsers/:userId").get( isSuperAdmin, getAllUsers)
-superRoutes.route("/alladmin/:userId").get( isSuperAdmin, getAllMachants );
-superRoutes.route("/SingleUser/:Id").get( getOne)
+superRoutes.route("/allUsers/:userId").get( getAllUsers)
+superRoutes.route("/alladmin/:userId").get( getAllMachants );
+superRoutes.route("/OneUser/:userId").get( getOne)
 //superRoutes.route("/alluser/:superId").get(IsSuperAdmin, allUser);
 superRoutes.route("/deluser/:Id/:userId").delete( deleteUser);
  

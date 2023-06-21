@@ -9,7 +9,7 @@ exports.NewPro = async (req, res) => {
         const theAdmin = req.params.Id;
         const admin = await AddAdmin.findById(theAdmin)
         // const result = await cloudinary.uploader.upload(req.files.image.tempFilePath)
-        const result = await cloudinary.uploader.upload(req.files.image.tempFilePath,{folder:"product"});
+        const result = await cloudinary.uploader.upload(req.files.image.tempFilePath,{folder:"Product"});
         const fruniData = {
             title: req.body.title,
             description: req.body.description,
@@ -22,10 +22,11 @@ exports.NewPro = async (req, res) => {
             brandName: req.body.brandName,
         }
         const created = await Addfurni(fruniData)
+        created.Admin = admin
         await created.save();
-        if (admin && Array.isArray(admin.product)) {
+        if (admin && Array.isArray(admin.Product)) {
             // await created.save();
-            admin.product.push(created);
+            admin.Product.push(created);
             await admin.save();
         }
         res.status(201).json({
@@ -36,7 +37,7 @@ exports.NewPro = async (req, res) => {
         res.status(400).json({
             message: e.message
         });
-    }
+    }  
 }
 exports.GetallFurni = (async (req, res) => {
     try {
@@ -151,7 +152,7 @@ exports.UpdateFurni = async (req, res) => {
             updateFields,
             { new: true }
         );
-
+ 
         res.status(201).json({
             message: "update was successful",  
             data: updatedProduct

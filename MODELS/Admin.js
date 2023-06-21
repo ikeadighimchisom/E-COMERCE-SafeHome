@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const userSchema = new mongoose.Schema ({
     name: {
         type: String,
@@ -39,19 +40,10 @@ const userSchema = new mongoose.Schema ({
         type: Boolean,
         default: false
     },
-    product:[{
+    Product:[{
         type: mongoose.Schema.Types.ObjectId,
          ref: "product"
       }],
-      Order:[{
-        type: mongoose.Schema.Types.ObjectId,
-         ref: "order"
-      }],
-    // role: {
-    //     type: String,
-    //     enum: ['user', 'admin', 'superadmin'],
-    //     default: 'user',
-    // },
 
     token: {
         type: String,

@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken")
 const mailSender = require("../tils/Emails")
 const cloudinary = require("../HELPER/cloudinary")
 const { isSuperAdmin } = require("../HELPER/athu")
+const Addfurni = require ("../MODELS/productModel")
+const Order = require("../MODELS/OrderproductModel")
 
 // exports.MachantSingUp = async (req, res) => {
 //     try {
@@ -79,8 +81,7 @@ exports.MachantSignUp = async(req, res) => {
         createUser.isMachant = true; 
         const myToken = jwt.sign({id:createUser._id,
              password: createUser.password,
-             IsMachant:createUser.isMachant,
-            IsSuperAdmin:createUser.isSuperAdmin},
+             IsMachant:createUser.isMachant},
               process.env.JWT_TOKEN,{expiresIn: "1d"})
               
             createUser.token = myToken;
@@ -376,17 +377,24 @@ exports.getAllUsers = async (req, res) => {
 
 exports.getOne = async (req, res) => {
     try {
-        const SingleUser = await AddMachant.findById(req.params.Id).populate("product").populate("order")
-        res.status(201).json({
-            message: "User Is Found Successful",
-            data: SingleUser
-        })
+      const userId = req.params.userId;
+  
+      // Retrieve the merchant's details
+      const singleAdmin = await AddMachant.findById(userId).populate("Product");
+  
+      res.status(201).json({
+        message: "User Is Found Successful",
+        data: {
+          merchant: singleAdmin,
+        },
+      });
     } catch (e) {
-        res.status(400).json({
-            message: e.message
-        })
+      res.status(400).json({
+        message: e.message,
+      });
     }
-}
+  };
+  
 // get only user
 exports.getAllMachants = async (req, res) => {
     try {
@@ -417,3 +425,29 @@ exports.deleteUser = async(req,res)=>{
         })
     }
 };
+
+
+
+
+exports.getMachantOrders = async (req, res) => {
+    try {
+      const machantId = req.params.machantId;
+  
+      // Find the merchant
+      const machant = await AddMachant.findById(machantId);
+
+      // Find the orders placed on the merchant's products
+      const orders = await Order.find({ Product: { $in: machant.Product } })
+        .populate('Product')
+        .populate('AddUser');
+  
+      res.status(200).json({
+        message: 'Merchant orders retrieved successfully',
+        orders: orders,
+      });
+    } catch (e) {
+      res.status(400).json({
+        message: e.message,
+      });
+    }
+  };

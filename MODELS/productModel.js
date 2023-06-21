@@ -38,10 +38,10 @@ const productSchema = mongoose.Schema({
   Order: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "order"
- },
+  },
   Admin: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "AddUser"
+    ref: "adduser"
  },
 },    
   {

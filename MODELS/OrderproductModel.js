@@ -23,15 +23,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         require: [true, "phoneNumber is required"],
     },
-
-    // Product: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "product"
-    // },
-    Admin: {
+    Product: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "AddUser"
-     },
+        ref: "product"
+    }],
     delivery:{
         type: Boolean,
         default: false
@@ -39,7 +34,7 @@ const orderSchema = new mongoose.Schema({
     delivered: {
         type: Boolean,
         default: false
-    }
+    },
 },{
     timestamps: true
 });

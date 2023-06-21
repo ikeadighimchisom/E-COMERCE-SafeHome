@@ -1,12 +1,12 @@
 const express = require("express");
-const Stock = require("../MODELS/productModel");
+const Product = require("../MODELS/productModel");
 
 exports.newStock = async (req, res) => {
   try{
-      const productId = req.params.ProId;
+      const productId = req.params.ProdId;
       const newStock = req.body.Stock;
       
-      const product = await Stock.findByIdAndUpdate(productId, {
+      const product = await Product.findByIdAndUpdate(productId, {
           stockQuantity: newStock
       });
      res.status(200).json({

@@ -231,29 +231,8 @@ exports.passwordchange = async (req, res) => {
     }
 };
 
-// exports.isMachantVerify=  async (req, res) => {
-//     try {
-//         const userid = req.params.userid
-//         const user = await AddMachant.findById(userid)
-//         await AddMachant.findByIdAndUpdate(
-//             user._id,
-//             {
-//                 isMachant: true
-//             },
-//             {
-//                 new: true
-//             }
-//         )
 
-//         res.status(200).json({
-//             message: "Machant Confirmed"
-//         })
-//     } catch (e) {
-//         res.status(401).json({
-//             message: e.message
-//         })
-//     }
-// }
+
 
 exports.isMachantVerify = async (req, res) => {
     try {
